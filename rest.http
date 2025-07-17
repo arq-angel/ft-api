@@ -2,7 +2,9 @@
 
 ### User
 ### Get user
-GET http://localhost:8000
+GET http://localhost:8000/api/v1/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZG9lLmNvbSIsImlhdCI6MTc1MjczNTUyOSwiZXhwIjoxNzUyODIxOTI5fQ.Cx6YdAb6wtMj9Rf8J6odeZ5hxmb9ygdrl-_KAfUPYJ4
+
 
 ### Post new user
 POST http://localhost:8000/api/v1/users
@@ -14,6 +16,14 @@ Content-Type: application/json
   "password": "Password@123"
 }
 
+### Login user
+POST http://localhost:8000/api/v1/users/login
+Content-Type: application/json
+
+{
+  "email": "john@doe.com",
+  "password": "Password@123"
+}
 
 
 ### Transactions

@@ -6,6 +6,9 @@ export const insertUser = (userObj) => {
 };
 
 // R
+export const getUserByEmail = (email) => {
+  return UserSchema.findOne({ email });
+};
 
 // U
 
