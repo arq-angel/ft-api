@@ -2,7 +2,7 @@
 
 ### User
 ### Get user
-GET http://localhost:8000/api/v1/users
+GET http://localhost:8000/api/v1/usersdd
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZG9lLmNvbSIsImlhdCI6MTc1MjczNTUyOSwiZXhwIjoxNzUyODIxOTI5fQ.Cx6YdAb6wtMj9Rf8J6odeZ5hxmb9ygdrl-_KAfUPYJ4
 
 
@@ -26,5 +26,27 @@ Content-Type: application/json
 }
 
 
-### Transactions
+### Transactions: all private routers
 
+### Post new transaction
+POST http://localhost:8000/api/v1/transactions
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZG9lLmNvbSIsImlhdCI6MTc1Mjc0MDc3NiwiZXhwIjoxNzUyODI3MTc2fQ.WNwB9dKlR0q25PwonLnoNwlLCKMe--M8d81NRSqRImI
+
+{
+  "type": "expenses",
+  "title": "Grocery",
+  "amount": 400,
+  "tDate": "2023-02-23"
+}
+
+### Get all transactions for the specific user
+GET http://localhost:8000/api/v1/transactions
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZG9lLmNvbSIsImlhdCI6MTc1MjczNTUyOSwiZXhwIjoxNzUyODIxOTI5fQ.Cx6YdAb6wtMj9Rf8J6odeZ5hxmb9ygdrl-_KAfUPYJ4
+
+### Delete transaction(s) for a specific user
+DELETE http://localhost:8000/api/v1/transactions
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5AZG9lLmNvbSIsImlhdCI6MTc1MjczNTUyOSwiZXhwIjoxNzUyODIxOTI5fQ.Cx6YdAb6wtMj9Rf8J6odeZ5hxmb9ygdrl-_KAfUPYJ4
+
+["6878d21bfcc6a1b2aa509023", "6878d1fefcc6a1b2aa509018"]

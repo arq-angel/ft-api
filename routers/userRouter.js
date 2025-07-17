@@ -12,8 +12,6 @@ router.post("/", async (req, res, next) => {
     // encrypt the password
     req.body.password = hashPassword(req.body.password);
 
-    console.log(req.body);
-
     // data verification and validation
     // insert the user
     const user = await insertUser(req.body);
@@ -28,15 +26,12 @@ router.post("/", async (req, res, next) => {
           message: "Error creating user. Please try again later.",
         });
   } catch (error) {
-    let msg = error.message;
-    if (msg.includes("E11000 duplicate key error collection")) {
-      msg =
+    if (error.message.includes("E11000 duplicate key error collection")) {
+      error.message =
         "Email has already been used, try to login or use a different email to signup!";
     }
-    res.json({
-      status: "error",
-      message: msg,
-    });
+    error.statusCode = 200;
+    next(error);
   }
 });
 
@@ -77,9 +72,7 @@ router.post("/login", async (req, res, next) => {
       error: "Invalid email or password",
     });
   } catch (error) {
-    res.status(500).json({
-      error: error.message,
-    });
+    next(error);
   }
 });
 
@@ -94,9 +87,7 @@ router.get("/", auth, (req, res, next) => {
       user,
     });
   } catch (error) {
-    res.status(500).json({
-      error: error.message,
-    });
+    next(error);
   }
 });
 
